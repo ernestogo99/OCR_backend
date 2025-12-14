@@ -1,5 +1,5 @@
 export class UserResponseDTO {
-  id: string;
+  userId: string;
   email: string;
   documents: Document;
 }

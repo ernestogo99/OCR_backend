@@ -1,26 +1,68 @@
-import { Injectable } from '@nestjs/common';
-import { CreateDocumentDto } from './dto/create-document.dto';
+import {
+  BadRequestException,
+  Injectable,
+  NotFoundException,
+} from '@nestjs/common';
 import { UpdateDocumentDto } from './dto/update-document.dto';
+import { File } from 'multer';
+import { MinIoService } from 'src/min-io/min-io.service';
+import { PrismaService } from 'src/prisma/prisma.service';
+import { UsersController } from 'src/users/users.controller';
 
 @Injectable()
 export class DocumentsService {
-  create(createDocumentDto: CreateDocumentDto) {
-    return 'This action adds a new document';
+  constructor(
+    private readonly prisma: PrismaService,
+    private readonly minIoService: MinIoService,
+  ) {}
+
+  async create(file: File, userId: string) {
+    if (!file) {
+      throw new BadRequestException('File is required');
+    }
+
+    if (!userId) {
+      throw new BadRequestException('id is required');
+    }
+
+    const fileKey = await this.minIoService.upload(file);
+
+    const document = await this.prisma.document.create({
+      data: {
+        userId,
+        fileUrl: fileKey,
+        extractedText: '', // OCR virá depois
+      },
+    });
+
+    return document;
   }
 
-  findAll() {
-    return `This action returns all documents`;
+  async findAllByUser(userId: string) {
+    const documents = await this.prisma.document.findMany({
+      where: { userId },
+      orderBy: { createdAt: 'desc' },
+    });
+
+    return documents.map((doc) => ({
+      ...doc,
+      fileUrl: this.minIoService.getFileUrl(doc.fileUrl),
+    }));
   }
 
-  findOne(id: number) {
-    return `This action returns a #${id} document`;
-  }
+  async findOneByUser(userId: string, documentId: string) {
+    const document = await this.prisma.document.findFirst({
+      where: { id: documentId, userId },
+    });
 
-  update(id: number, updateDocumentDto: UpdateDocumentDto) {
-    return `This action updates a #${id} document`;
-  }
+    if (!document) {
+      throw new NotFoundException(`Document not found`);
+    }
 
-  remove(id: number) {
-    return `This action removes a #${id} document`;
+    return {
+      ...document,
+      fileUrl: this.minIoService.getFileUrl(document.fileUrl),
+    };
   }
+  s;
 }

@@ -10,6 +10,7 @@ import { ConfigModule } from '@nestjs/config';
 import { DocumentsModule } from './documents/documents.module';
 import { OcrModule } from './ocr/ocr.module';
 import { LlmModule } from './llm/llm.module';
+import { MinIoModule } from './min-io/min-io.module';
 
 @Module({
   imports: [
@@ -21,6 +22,7 @@ import { LlmModule } from './llm/llm.module';
     DocumentsModule,
     OcrModule,
     LlmModule,
+    MinIoModule,
   ],
   controllers: [AppController],
   providers: [AppService, PrismaService],
