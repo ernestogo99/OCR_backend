@@ -120,6 +120,7 @@ paggo/
 - Postgres: Relational database for data storage
 - MinIO: An object storage service compatible with Amazon S3, used to store and manage files such as documents and images.
 - Docker: A containerization platform that packages the application and its dependencies into isolated containers, ensuring consistency across development and deployment environments.
+- Swagger: For api documentation
 
 ## Project setup
 
