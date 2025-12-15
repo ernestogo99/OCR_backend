@@ -682,6 +682,7 @@ export const DocumentScalarFieldEnum = {
   userId: 'userId',
   fileUrl: 'fileUrl',
   extractedText: 'extractedText',
+  ocrStatus: 'ocrStatus',
   createdAt: 'createdAt'
 } as const
 
@@ -740,6 +741,20 @@ export type StringFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 
  * Reference to a field of type 'String[]'
  */
 export type ListStringFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'String[]'>
+    
+
+
+/**
+ * Reference to a field of type 'OcrStatus'
+ */
+export type EnumOcrStatusFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'OcrStatus'>
+    
+
+
+/**
+ * Reference to a field of type 'OcrStatus[]'
+ */
+export type ListEnumOcrStatusFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'OcrStatus[]'>
     
 
 

@@ -26,6 +26,7 @@ model Document {
   fileUrl       String
   extractedText String
   interactions  LLMInteraction[]
+  ocrStatus     OcrStatus @default(PENDING)
   createdAt     DateTime         @default(now())
 }
 
@@ -37,4 +38,11 @@ model LLMInteraction {
   question   String
   answer     String
   createdAt  DateTime @default(now())
+}
+
+enum OcrStatus {
+  PENDING
+  PROCESSING
+  DONE
+  ERROR
 }

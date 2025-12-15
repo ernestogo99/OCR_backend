@@ -4,8 +4,8 @@ import { CreateUserDto } from './dto/create-user.dto';
 import {
   ApiBearerAuth,
   ApiBody,
+  ApiOkResponse,
   ApiOperation,
-  ApiResponse,
 } from '@nestjs/swagger';
 import { CurrentUser } from 'src/auth/currentUser';
 import { JwtAuthGuard } from 'src/auth/jwtauthguard';
@@ -29,6 +29,10 @@ export class UsersController {
   @Get('me')
   @UseGuards(JwtAuthGuard)
   @ApiBearerAuth('access-token')
+  @ApiOkResponse({
+    description: 'Usuário autenticado',
+    type: UserResponseDTO,
+  })
   getProfile(@CurrentUser() user: UserResponseDTO) {
     return user;
   }

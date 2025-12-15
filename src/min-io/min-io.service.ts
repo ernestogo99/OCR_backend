@@ -40,7 +40,7 @@ export class MinIoService {
       Key: key,
     });
 
-    return getSignedUrl(this.s3, command, { expiresIn: 3600 * 3600 });
+    return getSignedUrl(this.s3, command, { expiresIn: 60 * 60 * 24 * 7 });
   }
 
   async downloadFile(key: string): Promise<StreamableFile> {

@@ -1,26 +1,13 @@
 import { Injectable } from '@nestjs/common';
-import { CreateOcrDto } from './dto/create-ocr.dto';
-import { UpdateOcrDto } from './dto/update-ocr.dto';
+import { recognize } from 'tesseract.js';
 
 @Injectable()
 export class OcrService {
-  create(createOcrDto: CreateOcrDto) {
-    return 'This action adds a new ocr';
-  }
+  async extractText(buffer: Buffer): Promise<string> {
+    const { data } = await recognize(buffer, 'eng', {
+      logger: (m) => console.log('[OCR]', m.status),
+    });
 
-  findAll() {
-    return `This action returns all ocr`;
-  }
-
-  findOne(id: number) {
-    return `This action returns a #${id} ocr`;
-  }
-
-  update(id: number, updateOcrDto: UpdateOcrDto) {
-    return `This action updates a #${id} ocr`;
-  }
-
-  remove(id: number) {
-    return `This action removes a #${id} ocr`;
+    return data.text;
   }
 }

@@ -1,26 +1,33 @@
 import { Injectable } from '@nestjs/common';
-import { CreateLlmDto } from './dto/create-llm.dto';
-import { UpdateLlmDto } from './dto/update-llm.dto';
+
+import { GoogleGenAI } from '@google/genai';
 
 @Injectable()
 export class LlmService {
-  create(createLlmDto: CreateLlmDto) {
-    return 'This action adds a new llm';
+  private ai: GoogleGenAI;
+
+  constructor() {
+    this.ai = new GoogleGenAI({});
   }
 
-  findAll() {
-    return `This action returns all llm`;
-  }
+  async askDocument(extractedText: string, question: string): Promise<string> {
+    const prompt = `
+Você é um assistente que responde perguntas apenas com base no texto abaixo.
 
-  findOne(id: number) {
-    return `This action returns a #${id} llm`;
-  }
+Texto do documento:
+${extractedText}
 
-  update(id: number, updateLlmDto: UpdateLlmDto) {
-    return `This action updates a #${id} llm`;
-  }
+Pergunta:
+${question}
 
-  remove(id: number) {
-    return `This action removes a #${id} llm`;
+Se a resposta não estiver no texto, diga claramente que não foi encontrada.
+`;
+
+    const response = await this.ai.models.generateContent({
+      model: 'gemini-2.5-flash',
+      contents: prompt,
+    });
+
+    return response.text!;
   }
 }

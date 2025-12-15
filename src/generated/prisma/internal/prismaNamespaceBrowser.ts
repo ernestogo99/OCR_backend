@@ -87,6 +87,7 @@ export const DocumentScalarFieldEnum = {
   userId: 'userId',
   fileUrl: 'fileUrl',
   extractedText: 'extractedText',
+  ocrStatus: 'ocrStatus',
   createdAt: 'createdAt'
 } as const
 
