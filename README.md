@@ -7,6 +7,7 @@
 ![MinIO](https://img.shields.io/badge/MinIO-C72E49?style=for-the-badge&logo=MinIO&logoColor=white)
 ![Postgres](https://img.shields.io/badge/postgres-%234D6A9C.svg?style=for-the-badge&logo=postgresql&logoColor=white)
 ![Gemini](https://img.shields.io/badge/google%20gemini-8E75B2?style=for-the-badge&logo=google%20gemini&logoColor=white)
+![Prisma](https://img.shields.io/badge/Prisma-3982CE?style=for-the-badge&logo=Prisma&logoColor=white)
 
 ## Table of Contents
 
@@ -130,6 +131,7 @@ paggo/
 - Swagger: For api documentation
 - TesseractJs: api for text extraction in images
 - Gemini API: Language model to explain or provide context for the extracted text
+- Prisma: ORM for type-safe database access and database schema management
 
 ## Project setup
 
