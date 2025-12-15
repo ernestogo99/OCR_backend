@@ -6,10 +6,11 @@
 ![Swagger](https://img.shields.io/badge/Swagger-%2383B93E?style=for-the-badge&logo=swagger&logoColor=white)
 ![MinIO](https://img.shields.io/badge/MinIO-C72E49?style=for-the-badge&logo=MinIO&logoColor=white)
 ![Postgres](https://img.shields.io/badge/postgres-%234D6A9C.svg?style=for-the-badge&logo=postgresql&logoColor=white)
+![Gemini](https://img.shields.io/badge/google%20gemini-8E75B2?style=for-the-badge&logo=google%20gemini&logoColor=white)
 
 ## Table of Contents
 
-- [Description](#description)
+- [System Features](#system-features)
 - [Prerequisites](#prerequisites)
 - [Folder Structure](#folder-structure)
 - [Technologies Used](#technologies-used)
@@ -17,10 +18,16 @@
 - [API Documentation](#-api-documentation)
 - [Available Services](#-available-services)
 
-## Description
+## System Features
 
-OCR backend application: you can create an account, log in, upload a image and ask for gemini
-informations about the text in the image.
+- LLM Integration for Context and Explanation: The gemini Api provides a model which explain
+  or provide context for the extracted text to the users, users can make queries about the extracted text.
+
+- View Uploaded Documents:The endpoint (documents.get) returns a list with all of their user previously uploaded documents along with the extracted information and LLM interactions
+
+- Auth: You can create a user and log in to upload your images and interact with them
+
+- Download Documents with Extracted Text : The endpoint (documents/dowload) allows the user to download the uploaded documents with the appended extracted text and LLM interactions.
 
 ## Prerequisites
 
@@ -121,6 +128,8 @@ paggo/
 - MinIO: An object storage service compatible with Amazon S3, used to store and manage files such as documents and images.
 - Docker: A containerization platform that packages the application and its dependencies into isolated containers, ensuring consistency across development and deployment environments.
 - Swagger: For api documentation
+- TesseractJs: api for text extraction in images
+- Gemini API: Language model to explain or provide context for the extracted text
 
 ## Project setup
 
