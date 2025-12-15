@@ -15,7 +15,7 @@
 - [Technologies Used](#technologies-used)
 - [Project setup](#project-setup)
 - [API Documentation](#-api-documentation)
-- [Available Services](#-quick-start)
+- [Available Services](#-available-services)
 
 ## Description
 
