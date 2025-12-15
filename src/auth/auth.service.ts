@@ -4,6 +4,7 @@ import { UsersService } from 'src/users/users.service';
 import { JwtService } from '@nestjs/jwt';
 import { AuthResponseDTO } from './dto/auth-response-dto';
 import { ConfigService } from '@nestjs/config';
+import { compareSync } from 'bcryptjs';
 @Injectable()
 export class AuthService {
   private jwtExpirationTimeInSeconds: number;
@@ -22,7 +23,16 @@ export class AuthService {
     const foundUser = await this.userService.findByEmail(createAuthDto.email);
 
     if (!foundUser) {
-      throw new UnauthorizedException();
+      throw new UnauthorizedException('Usuário não encontrado');
+    }
+
+    const passwordValid = compareSync(
+      createAuthDto.password,
+      foundUser.password,
+    );
+
+    if (!passwordValid) {
+      throw new UnauthorizedException('Senha incorreta');
     }
 
     const payload = { sub: foundUser.id, email: foundUser.email };
