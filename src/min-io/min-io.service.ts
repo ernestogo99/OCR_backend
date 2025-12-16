@@ -10,13 +10,12 @@ import { File } from 'multer';
 @Injectable()
 export class MinIoService {
   private s3 = new S3Client({
-    endpoint: `http://${process.env.MINIO_ENDPOINT}:${process.env.MINIO_PORT}`,
-    region: 'us-east-1',
+    region: process.env.AWS_REGION,
     credentials: {
-      accessKeyId: process.env.MINIO_ACCESS_KEY!,
-      secretAccessKey: process.env.MINIO_SECRET_KEY!,
+      accessKeyId: process.env.AWS_ACCESS_KEY_ID!,
+      secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY!,
+      sessionToken: process.env.AWS_SESSION_TOKEN!,
     },
-    forcePathStyle: true,
   });
 
   async upload(file: File) {
@@ -24,7 +23,7 @@ export class MinIoService {
 
     await this.s3.send(
       new PutObjectCommand({
-        Bucket: process.env.MINIO_BUCKET!,
+        Bucket: process.env.AWS_S3_BUCKET,
         Key: key,
         Body: file.buffer,
         ContentType: file.mimetype,
@@ -36,7 +35,7 @@ export class MinIoService {
 
   async getFileUrl(key: string): Promise<string> {
     const command = new GetObjectCommand({
-      Bucket: process.env.MINIO_BUCKET!,
+      Bucket: process.env.AWS_S3_BUCKET,
       Key: key,
     });
 
@@ -46,7 +45,7 @@ export class MinIoService {
   async downloadFile(key: string): Promise<StreamableFile> {
     const response = await this.s3.send(
       new GetObjectCommand({
-        Bucket: process.env.MINIO_BUCKET!,
+        Bucket: process.env.AWS_S3_BUCKET,
         Key: key,
       }),
     );
