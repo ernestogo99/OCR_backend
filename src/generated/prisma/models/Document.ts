@@ -28,6 +28,7 @@ export type DocumentMinAggregateOutputType = {
   id: string | null
   userId: string | null
   fileUrl: string | null
+  fileKey: string | null
   extractedText: string | null
   ocrStatus: $Enums.OcrStatus | null
   createdAt: Date | null
@@ -37,6 +38,7 @@ export type DocumentMaxAggregateOutputType = {
   id: string | null
   userId: string | null
   fileUrl: string | null
+  fileKey: string | null
   extractedText: string | null
   ocrStatus: $Enums.OcrStatus | null
   createdAt: Date | null
@@ -46,6 +48,7 @@ export type DocumentCountAggregateOutputType = {
   id: number
   userId: number
   fileUrl: number
+  fileKey: number
   extractedText: number
   ocrStatus: number
   createdAt: number
@@ -57,6 +60,7 @@ export type DocumentMinAggregateInputType = {
   id?: true
   userId?: true
   fileUrl?: true
+  fileKey?: true
   extractedText?: true
   ocrStatus?: true
   createdAt?: true
@@ -66,6 +70,7 @@ export type DocumentMaxAggregateInputType = {
   id?: true
   userId?: true
   fileUrl?: true
+  fileKey?: true
   extractedText?: true
   ocrStatus?: true
   createdAt?: true
@@ -75,6 +80,7 @@ export type DocumentCountAggregateInputType = {
   id?: true
   userId?: true
   fileUrl?: true
+  fileKey?: true
   extractedText?: true
   ocrStatus?: true
   createdAt?: true
@@ -157,6 +163,7 @@ export type DocumentGroupByOutputType = {
   id: string
   userId: string
   fileUrl: string
+  fileKey: string | null
   extractedText: string
   ocrStatus: $Enums.OcrStatus
   createdAt: Date
@@ -187,6 +194,7 @@ export type DocumentWhereInput = {
   id?: Prisma.StringFilter<"Document"> | string
   userId?: Prisma.StringFilter<"Document"> | string
   fileUrl?: Prisma.StringFilter<"Document"> | string
+  fileKey?: Prisma.StringNullableFilter<"Document"> | string | null
   extractedText?: Prisma.StringFilter<"Document"> | string
   ocrStatus?: Prisma.EnumOcrStatusFilter<"Document"> | $Enums.OcrStatus
   createdAt?: Prisma.DateTimeFilter<"Document"> | Date | string
@@ -198,6 +206,7 @@ export type DocumentOrderByWithRelationInput = {
   id?: Prisma.SortOrder
   userId?: Prisma.SortOrder
   fileUrl?: Prisma.SortOrder
+  fileKey?: Prisma.SortOrderInput | Prisma.SortOrder
   extractedText?: Prisma.SortOrder
   ocrStatus?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
@@ -212,6 +221,7 @@ export type DocumentWhereUniqueInput = Prisma.AtLeast<{
   NOT?: Prisma.DocumentWhereInput | Prisma.DocumentWhereInput[]
   userId?: Prisma.StringFilter<"Document"> | string
   fileUrl?: Prisma.StringFilter<"Document"> | string
+  fileKey?: Prisma.StringNullableFilter<"Document"> | string | null
   extractedText?: Prisma.StringFilter<"Document"> | string
   ocrStatus?: Prisma.EnumOcrStatusFilter<"Document"> | $Enums.OcrStatus
   createdAt?: Prisma.DateTimeFilter<"Document"> | Date | string
@@ -223,6 +233,7 @@ export type DocumentOrderByWithAggregationInput = {
   id?: Prisma.SortOrder
   userId?: Prisma.SortOrder
   fileUrl?: Prisma.SortOrder
+  fileKey?: Prisma.SortOrderInput | Prisma.SortOrder
   extractedText?: Prisma.SortOrder
   ocrStatus?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
@@ -238,6 +249,7 @@ export type DocumentScalarWhereWithAggregatesInput = {
   id?: Prisma.StringWithAggregatesFilter<"Document"> | string
   userId?: Prisma.StringWithAggregatesFilter<"Document"> | string
   fileUrl?: Prisma.StringWithAggregatesFilter<"Document"> | string
+  fileKey?: Prisma.StringNullableWithAggregatesFilter<"Document"> | string | null
   extractedText?: Prisma.StringWithAggregatesFilter<"Document"> | string
   ocrStatus?: Prisma.EnumOcrStatusWithAggregatesFilter<"Document"> | $Enums.OcrStatus
   createdAt?: Prisma.DateTimeWithAggregatesFilter<"Document"> | Date | string
@@ -246,6 +258,7 @@ export type DocumentScalarWhereWithAggregatesInput = {
 export type DocumentCreateInput = {
   id?: string
   fileUrl: string
+  fileKey?: string | null
   extractedText: string
   ocrStatus?: $Enums.OcrStatus
   createdAt?: Date | string
@@ -257,6 +270,7 @@ export type DocumentUncheckedCreateInput = {
   id?: string
   userId: string
   fileUrl: string
+  fileKey?: string | null
   extractedText: string
   ocrStatus?: $Enums.OcrStatus
   createdAt?: Date | string
@@ -266,6 +280,7 @@ export type DocumentUncheckedCreateInput = {
 export type DocumentUpdateInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   fileUrl?: Prisma.StringFieldUpdateOperationsInput | string
+  fileKey?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   extractedText?: Prisma.StringFieldUpdateOperationsInput | string
   ocrStatus?: Prisma.EnumOcrStatusFieldUpdateOperationsInput | $Enums.OcrStatus
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -277,6 +292,7 @@ export type DocumentUncheckedUpdateInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   userId?: Prisma.StringFieldUpdateOperationsInput | string
   fileUrl?: Prisma.StringFieldUpdateOperationsInput | string
+  fileKey?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   extractedText?: Prisma.StringFieldUpdateOperationsInput | string
   ocrStatus?: Prisma.EnumOcrStatusFieldUpdateOperationsInput | $Enums.OcrStatus
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -287,6 +303,7 @@ export type DocumentCreateManyInput = {
   id?: string
   userId: string
   fileUrl: string
+  fileKey?: string | null
   extractedText: string
   ocrStatus?: $Enums.OcrStatus
   createdAt?: Date | string
@@ -295,6 +312,7 @@ export type DocumentCreateManyInput = {
 export type DocumentUpdateManyMutationInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   fileUrl?: Prisma.StringFieldUpdateOperationsInput | string
+  fileKey?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   extractedText?: Prisma.StringFieldUpdateOperationsInput | string
   ocrStatus?: Prisma.EnumOcrStatusFieldUpdateOperationsInput | $Enums.OcrStatus
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -304,6 +322,7 @@ export type DocumentUncheckedUpdateManyInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   userId?: Prisma.StringFieldUpdateOperationsInput | string
   fileUrl?: Prisma.StringFieldUpdateOperationsInput | string
+  fileKey?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   extractedText?: Prisma.StringFieldUpdateOperationsInput | string
   ocrStatus?: Prisma.EnumOcrStatusFieldUpdateOperationsInput | $Enums.OcrStatus
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -323,6 +342,7 @@ export type DocumentCountOrderByAggregateInput = {
   id?: Prisma.SortOrder
   userId?: Prisma.SortOrder
   fileUrl?: Prisma.SortOrder
+  fileKey?: Prisma.SortOrder
   extractedText?: Prisma.SortOrder
   ocrStatus?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
@@ -332,6 +352,7 @@ export type DocumentMaxOrderByAggregateInput = {
   id?: Prisma.SortOrder
   userId?: Prisma.SortOrder
   fileUrl?: Prisma.SortOrder
+  fileKey?: Prisma.SortOrder
   extractedText?: Prisma.SortOrder
   ocrStatus?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
@@ -341,6 +362,7 @@ export type DocumentMinOrderByAggregateInput = {
   id?: Prisma.SortOrder
   userId?: Prisma.SortOrder
   fileUrl?: Prisma.SortOrder
+  fileKey?: Prisma.SortOrder
   extractedText?: Prisma.SortOrder
   ocrStatus?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
@@ -418,6 +440,7 @@ export type DocumentUpdateOneRequiredWithoutInteractionsNestedInput = {
 export type DocumentCreateWithoutUserInput = {
   id?: string
   fileUrl: string
+  fileKey?: string | null
   extractedText: string
   ocrStatus?: $Enums.OcrStatus
   createdAt?: Date | string
@@ -427,6 +450,7 @@ export type DocumentCreateWithoutUserInput = {
 export type DocumentUncheckedCreateWithoutUserInput = {
   id?: string
   fileUrl: string
+  fileKey?: string | null
   extractedText: string
   ocrStatus?: $Enums.OcrStatus
   createdAt?: Date | string
@@ -466,6 +490,7 @@ export type DocumentScalarWhereInput = {
   id?: Prisma.StringFilter<"Document"> | string
   userId?: Prisma.StringFilter<"Document"> | string
   fileUrl?: Prisma.StringFilter<"Document"> | string
+  fileKey?: Prisma.StringNullableFilter<"Document"> | string | null
   extractedText?: Prisma.StringFilter<"Document"> | string
   ocrStatus?: Prisma.EnumOcrStatusFilter<"Document"> | $Enums.OcrStatus
   createdAt?: Prisma.DateTimeFilter<"Document"> | Date | string
@@ -474,6 +499,7 @@ export type DocumentScalarWhereInput = {
 export type DocumentCreateWithoutInteractionsInput = {
   id?: string
   fileUrl: string
+  fileKey?: string | null
   extractedText: string
   ocrStatus?: $Enums.OcrStatus
   createdAt?: Date | string
@@ -484,6 +510,7 @@ export type DocumentUncheckedCreateWithoutInteractionsInput = {
   id?: string
   userId: string
   fileUrl: string
+  fileKey?: string | null
   extractedText: string
   ocrStatus?: $Enums.OcrStatus
   createdAt?: Date | string
@@ -508,6 +535,7 @@ export type DocumentUpdateToOneWithWhereWithoutInteractionsInput = {
 export type DocumentUpdateWithoutInteractionsInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   fileUrl?: Prisma.StringFieldUpdateOperationsInput | string
+  fileKey?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   extractedText?: Prisma.StringFieldUpdateOperationsInput | string
   ocrStatus?: Prisma.EnumOcrStatusFieldUpdateOperationsInput | $Enums.OcrStatus
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -518,6 +546,7 @@ export type DocumentUncheckedUpdateWithoutInteractionsInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   userId?: Prisma.StringFieldUpdateOperationsInput | string
   fileUrl?: Prisma.StringFieldUpdateOperationsInput | string
+  fileKey?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   extractedText?: Prisma.StringFieldUpdateOperationsInput | string
   ocrStatus?: Prisma.EnumOcrStatusFieldUpdateOperationsInput | $Enums.OcrStatus
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -526,6 +555,7 @@ export type DocumentUncheckedUpdateWithoutInteractionsInput = {
 export type DocumentCreateManyUserInput = {
   id?: string
   fileUrl: string
+  fileKey?: string | null
   extractedText: string
   ocrStatus?: $Enums.OcrStatus
   createdAt?: Date | string
@@ -534,6 +564,7 @@ export type DocumentCreateManyUserInput = {
 export type DocumentUpdateWithoutUserInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   fileUrl?: Prisma.StringFieldUpdateOperationsInput | string
+  fileKey?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   extractedText?: Prisma.StringFieldUpdateOperationsInput | string
   ocrStatus?: Prisma.EnumOcrStatusFieldUpdateOperationsInput | $Enums.OcrStatus
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -543,6 +574,7 @@ export type DocumentUpdateWithoutUserInput = {
 export type DocumentUncheckedUpdateWithoutUserInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   fileUrl?: Prisma.StringFieldUpdateOperationsInput | string
+  fileKey?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   extractedText?: Prisma.StringFieldUpdateOperationsInput | string
   ocrStatus?: Prisma.EnumOcrStatusFieldUpdateOperationsInput | $Enums.OcrStatus
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -552,6 +584,7 @@ export type DocumentUncheckedUpdateWithoutUserInput = {
 export type DocumentUncheckedUpdateManyWithoutUserInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   fileUrl?: Prisma.StringFieldUpdateOperationsInput | string
+  fileKey?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   extractedText?: Prisma.StringFieldUpdateOperationsInput | string
   ocrStatus?: Prisma.EnumOcrStatusFieldUpdateOperationsInput | $Enums.OcrStatus
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -592,6 +625,7 @@ export type DocumentSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs
   id?: boolean
   userId?: boolean
   fileUrl?: boolean
+  fileKey?: boolean
   extractedText?: boolean
   ocrStatus?: boolean
   createdAt?: boolean
@@ -604,6 +638,7 @@ export type DocumentSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Exte
   id?: boolean
   userId?: boolean
   fileUrl?: boolean
+  fileKey?: boolean
   extractedText?: boolean
   ocrStatus?: boolean
   createdAt?: boolean
@@ -614,6 +649,7 @@ export type DocumentSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Exte
   id?: boolean
   userId?: boolean
   fileUrl?: boolean
+  fileKey?: boolean
   extractedText?: boolean
   ocrStatus?: boolean
   createdAt?: boolean
@@ -624,12 +660,13 @@ export type DocumentSelectScalar = {
   id?: boolean
   userId?: boolean
   fileUrl?: boolean
+  fileKey?: boolean
   extractedText?: boolean
   ocrStatus?: boolean
   createdAt?: boolean
 }
 
-export type DocumentOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "userId" | "fileUrl" | "extractedText" | "ocrStatus" | "createdAt", ExtArgs["result"]["document"]>
+export type DocumentOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "userId" | "fileUrl" | "fileKey" | "extractedText" | "ocrStatus" | "createdAt", ExtArgs["result"]["document"]>
 export type DocumentInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   user?: boolean | Prisma.UsersDefaultArgs<ExtArgs>
   interactions?: boolean | Prisma.Document$interactionsArgs<ExtArgs>
@@ -652,6 +689,7 @@ export type $DocumentPayload<ExtArgs extends runtime.Types.Extensions.InternalAr
     id: string
     userId: string
     fileUrl: string
+    fileKey: string | null
     extractedText: string
     ocrStatus: $Enums.OcrStatus
     createdAt: Date
@@ -1083,6 +1121,7 @@ export interface DocumentFieldRefs {
   readonly id: Prisma.FieldRef<"Document", 'String'>
   readonly userId: Prisma.FieldRef<"Document", 'String'>
   readonly fileUrl: Prisma.FieldRef<"Document", 'String'>
+  readonly fileKey: Prisma.FieldRef<"Document", 'String'>
   readonly extractedText: Prisma.FieldRef<"Document", 'String'>
   readonly ocrStatus: Prisma.FieldRef<"Document", 'OcrStatus'>
   readonly createdAt: Prisma.FieldRef<"Document", 'DateTime'>

@@ -38,6 +38,7 @@ export class DocumentsService {
         fileUrl: url,
         ocrStatus: OcrStatus.PENDING,
         extractedText: '',
+        fileKey,
       },
     });
 
@@ -130,6 +131,21 @@ export class DocumentsService {
     }
 
     return document;
+  }
+
+  async getFileByUser(userId: string, documentId: string) {
+    const document = await this.prisma.document.findFirst({
+      where: {
+        id: documentId,
+        userId,
+      },
+    });
+
+    if (!document) {
+      throw new NotFoundException('Document not found');
+    }
+
+    return this.minIoService.downloadFile(document.fileKey!);
   }
 
   async getDocumentWithInteractions(userId: string, documentId: string) {

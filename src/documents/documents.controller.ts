@@ -109,4 +109,17 @@ export class DocumentsController {
       disposition: `attachment; filename="document-${documentId}.txt"`,
     });
   }
+
+  @Get(':id/file')
+  @ApiOperation({ summary: 'Visualizar ou baixar o arquivo original' })
+  @ApiOkResponse({
+    description: 'Arquivo do documento',
+    schema: { type: 'string', format: 'binary' },
+  })
+  async getFile(
+    @Param('id') documentId: string,
+    @CurrentUser() user: UserResponseDTO,
+  ): Promise<StreamableFile> {
+    return this.documentsService.getFileByUser(user.userId, documentId);
+  }
 }

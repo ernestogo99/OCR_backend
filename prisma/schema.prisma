@@ -24,6 +24,7 @@ model Document {
   userId        String
   user          Users             @relation(fields: [userId], references: [id])
   fileUrl       String
+  fileKey       String? 
   extractedText String
   interactions  LLMInteraction[]
   ocrStatus     OcrStatus @default(PENDING)
@@ -46,3 +47,4 @@ enum OcrStatus {
   DONE
   ERROR
 }
+
