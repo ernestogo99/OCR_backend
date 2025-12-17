@@ -4,7 +4,6 @@
 ![Docker](https://img.shields.io/badge/docker-%2378C3E6.svg?style=for-the-badge&logo=docker&logoColor=white)
 ![Typescript](https://img.shields.io/badge/TypeScript-3178C6?style=for-the-badge&logo=typescript&logoColor=white)
 ![Swagger](https://img.shields.io/badge/Swagger-%2383B93E?style=for-the-badge&logo=swagger&logoColor=white)
-![MinIO](https://img.shields.io/badge/MinIO-C72E49?style=for-the-badge&logo=MinIO&logoColor=white)
 ![Postgres](https://img.shields.io/badge/postgres-%234D6A9C.svg?style=for-the-badge&logo=postgresql&logoColor=white)
 ![Gemini](https://img.shields.io/badge/google%20gemini-8E75B2?style=for-the-badge&logo=google%20gemini&logoColor=white)
 ![Prisma](https://img.shields.io/badge/Prisma-3982CE?style=for-the-badge&logo=Prisma&logoColor=white)
@@ -126,7 +125,7 @@ paggo/
 - Typescript: Programming language for back-end
 - Nestjs: Back-end framework
 - Postgres: Relational database for data storage
-- MinIO: An object storage service compatible with Amazon S3, used to store and manage files such as documents and images.
+- S3: An object storage service used to store and manage files such as documents and images.
 - Docker: A containerization platform that packages the application and its dependencies into isolated containers, ensuring consistency across development and deployment environments.
 - Swagger: For api documentation
 - TesseractJs: api for text extraction in images
@@ -177,7 +176,6 @@ The API uses JWT-based authentication
 
 ## 🌐 Available Services
 
-| Service               | URL                       | Description   | Credentials                |
-| --------------------- | ------------------------- | ------------- | -------------------------- |
-| **API Documentation** | http://localhost:3000/api | Swagger UI    | N/A                        |
-| **Object Storage**    | http://localhost:9000     | MinIO Console | minioadmin / minioadmin123 |
+| Service               | URL                       | Description | Credentials |
+| --------------------- | ------------------------- | ----------- | ----------- |
+| **API Documentation** | http://localhost:3000/api | Swagger UI  | N/A         |
