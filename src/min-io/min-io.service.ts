@@ -16,7 +16,6 @@ export class MinIoService {
       secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY!,
       sessionToken: process.env.AWS_SESSION_TOKEN,
     },
-    forcePathStyle: true,
   });
 
   async upload(file: File) {
